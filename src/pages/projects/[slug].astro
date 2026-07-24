@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects.js';
+
+export function getStaticPaths() {
+  return projects
+    .filter((project) => !project.externalUrl && !project.custom)
+    .map((project) => ({
+      params: { slug: project.slug },
+      props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+const formName = `interest-${project.slug}`;
+---
+
+<Layout title={project.name} description={project.description} accent={project.accent}>
+  <div class="wrap breadcrumb">
+    <a href="/">&larr; All Projects</a>
+  </div>
+
+  <div class="wrap coming-soon">
+    <span class="eyebrow">Coming Soon{project.location && ` · ${project.location}`}</span>
+    <h1>
+      {project.headline.line1} <em>{project.headline.accentWord}</em>
+    </h1>
+    {project.location && <p class="location">{project.location}</p>}
+
+    <div class="stat-box">
+      <span class="label">{project.category}</span>
+      <span class="value">{project.stat}</span>
+    </div>
+
+    <p class="description">
+      {project.description} This project site is coming soon — register below and we'll notify you as soon as
+      more details are available.
+    </p>
+
+    <div class="register-panel">
+      <h2>Register your interest</h2>
+      <p class="intro">Be the first to know when {project.name} launches.</p>
+
+      <form name={formName} method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+        <input type="hidden" name="form-name" value={formName} />
+        <input type="hidden" name="project" value={project.name} />
+        <p class="honeypot-field">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="first-name">First Name</label>
+            <input id="first-name" name="first-name" type="text" required />
+          </div>
+          <div class="form-field">
+            <label for="last-name">Last Name</label>
+            <input id="last-name" name="last-name" type="text" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Questions? (optional)</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+        </div>
+
+        <button class="btn btn-accent" type="submit">Register My Interest</button>
+        <p class="form-note">Your information is only shared with the Crystal Bay team. We never sell or distribute contact details.</p>
+      </form>
+    </div>
+
+    <a class="back-home" href="/">&larr; Back to Crystal Bay Home</a>
+  </div>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+
+const { title, description = 'Crystal Bay real estate development projects.', accent = '#5b84a6' } = Astro.props;
+const pageTitle = title ? `${title} | Crystal Bay` : 'Crystal Bay';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body style={`--accent: ${accent}`}>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <Logo />
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; {new Date().getFullYear()} Crystal Bay Real Estate. All projects conceptual and subject to change.</span>
+        <a href="/">Back to Home</a>
+      </div>
+    </footer>
+  </body>
+</html>

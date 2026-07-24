@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects.js';
+
+const project = projects.find((p) => p.slug === 'overton-ranch');
+const { details } = project;
+const formName = `interest-${project.slug}`;
+---
+
+<Layout title={project.name} description={details.overview} accent={project.accent}>
+  <div class="wrap breadcrumb">
+    <a href="/">&larr; All Projects</a>
+  </div>
+
+  <div class="wrap coming-soon">
+    <span class="eyebrow">{details.status} &middot; {project.location}</span>
+    <h1>
+      {project.headline.line1} <em>{project.headline.accentWord}</em>
+    </h1>
+    <p class="location">{details.phase}</p>
+
+    <div class="stat-cluster">
+      {
+        details.stats.map((stat) => (
+          <div class="stat-chip">
+            <span class="label">{stat.label}</span>
+            <span class="value">{stat.value}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="description">{details.overview}</p>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-heading">
+        <span class="eyebrow">Home Styles</span>
+        <h2>Six designs to choose from</h2>
+      </div>
+      <div class="style-grid">
+        {
+          details.homeStyles.map((style) => (
+            <div class="style-card">
+              <img src={style.image} alt={style.alt} loading="lazy" />
+              <div class="style-card-body">
+                <span class="style-type">{style.type}</span>
+                <h3>{style.name}</h3>
+                <ul class="style-specs">
+                  <li><strong>{style.sqft}</strong></li>
+                  <li>{style.beds}</li>
+                  <li>{style.garage}</li>
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-heading">
+        <span class="eyebrow">Exterior Finishes</span>
+        <h2>Materials built to last in the desert</h2>
+      </div>
+      <div class="feature-grid">
+        {
+          details.features.map((feature) => (
+            <div class="feature-card">
+              <h3>{feature.title}</h3>
+              <p>{feature.copy}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="color-swatches">
+        {
+          details.colorPalette.map((color) => (
+            <div class="color-swatch">
+              <span class="chip" style={`background:${color.hex}`}></span>
+              <span>{color.name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="register-panel">
+        <h2>Register your interest</h2>
+        <p class="intro">Be the first to know when {project.name} opens for sale.</p>
+
+        <form name={formName} method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+          <input type="hidden" name="form-name" value={formName} />
+          <input type="hidden" name="project" value={project.name} />
+          <p class="honeypot-field">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="first-name">First Name</label>
+              <input id="first-name" name="first-name" type="text" required />
+            </div>
+            <div class="form-field">
+              <label for="last-name">Last Name</label>
+              <input id="last-name" name="last-name" type="text" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Questions? (optional)</label>
+            <textarea id="message" name="message" rows="3"></textarea>
+          </div>
+
+          <button class="btn btn-accent" type="submit">Register My Interest</button>
+          <p class="form-note">Your information is only shared with the Crystal Bay team. We never sell or distribute contact details.</p>
+        </form>
+      </div>
+
+      <a class="back-home" href="/">&larr; Back to Crystal Bay Home</a>
+    </div>
+  </section>
+</Layout>

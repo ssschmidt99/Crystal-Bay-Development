@@ -1,0 +1,48 @@
+---
+const { stacked = false, class: className = '' } = Astro.props;
+---
+
+<span class:list={['logo', { 'logo--stacked': stacked }, className]}>
+  <svg class="logo-mark" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M2 14C8 14 8 4 16 4C24 4 24 14 30 14C36 14 36 6 44 6"
+      stroke="currentColor"
+      stroke-width="2.6"
+      stroke-linecap="round"
+    ></path>
+  </svg>
+  <span class="logo-word">Crystal Bay</span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: inherit;
+  }
+
+  .logo-mark {
+    width: 1.85rem;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .logo-word {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .logo--stacked {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .logo--stacked .logo-mark {
+    width: 2.75rem;
+  }
+</style>

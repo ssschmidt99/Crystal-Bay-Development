@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects.js';
+---
+
+<Layout title="Home" description="Crystal Bay is a real estate development company. Explore our current projects.">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Real Estate Development</span>
+        <h1>Crystal Bay</h1>
+        <p>
+          We develop storage, residential, and flex-space properties across the country.
+          Explore our current projects below.
+        </p>
+      </div>
+      <div class="hero-photo">
+        <img
+          src="/images/water-street-cottages-exterior.jpg"
+          alt="Exterior rendering of Water Street Cottages, a Crystal Bay development"
+          width="960"
+          height="720"
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="project-grid">
+      {
+        projects.map((project) => (
+          <a
+            class="project-card"
+            style={`--card-accent: ${project.accent}`}
+            href={project.externalUrl ?? `/projects/${project.slug}/`}
+            target={project.externalUrl ? '_blank' : undefined}
+            rel={project.externalUrl ? 'noopener' : undefined}
+          >
+            <span class="category">{project.category}</span>
+            <h3>{project.name}</h3>
+            <p class="stat">{project.stat}</p>
+            <p class="desc">{project.summary}</p>
+            {project.externalUrl && <span class="external-note">View Project Site &rarr;</span>}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
