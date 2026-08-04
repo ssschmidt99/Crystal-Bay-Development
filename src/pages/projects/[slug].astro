@@ -37,6 +37,12 @@ const formName = `interest-${project.slug}`;
       more details are available.
     </p>
 
+    {
+      project.image && (
+        <img class="coming-soon-photo" src={project.image.src} alt={project.image.alt} loading="eager" />
+      )
+    }
+
     <div class="register-panel">
       <h2>Register your interest</h2>
       <p class="intro">Be the first to know when {project.name} launches.</p>

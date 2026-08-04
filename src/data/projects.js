@@ -174,6 +174,10 @@ export const projects = [
     summary: '21,000 sq ft of flex space in El Dorado, Decatur.',
     description: 'A 21,000 square foot flex space development in the El Dorado area of Decatur.',
     accent: '#b5573a',
+    image: {
+      src: '/images/decatur-el-dorado-flex/render.jpg',
+      alt: 'Exterior rendering of the Decatur El Dorado Flex Space building',
+    },
   },
   {
     slug: 'lincoln-mini-flex',
@@ -289,14 +293,19 @@ export const projects = [
     externalUrl: 'https://waterstreetcottages.com',
   },
   {
-    slug: 'mcknight-painiflow-cottages',
-    name: 'McKnight / Painiflow Cottages',
-    headline: { line1: 'McKnight / Painiflow', accentWord: 'Cottages' },
-    location: '',
+    slug: 'mcknight-cottages',
+    name: 'McKnight Cottages',
+    headline: { line1: 'McKnight', accentWord: 'Cottages' },
+    location: 'Las Vegas, Nevada',
     category: 'Residential',
-    stat: '45–57 lots',
-    summary: 'A cottage community of 45 to 57 lots.',
-    description: 'McKnight / Painiflow Cottages is a residential cottage community of 45 to 57 lots.',
+    stat: '87 units',
+    summary: 'An 87-unit cottage community in Las Vegas.',
+    description:
+      'McKnight Cottages is a planned 87-unit residential community at the corner of Harris Avenue, McKnight Street, and Painiflow Street in Las Vegas, Nevada, with 62 on-site parking stalls.',
     accent: '#8a6bb1',
+    image: {
+      src: '/images/mcknight-cottages/site-plan.jpg',
+      alt: 'Preliminary site plan for McKnight Cottages showing 87 units along McKnight Street and Painiflow Street',
+    },
   },
 ];
