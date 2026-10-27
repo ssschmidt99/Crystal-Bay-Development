@@ -1,8 +1,14 @@
 ---
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
+import '@fontsource/instrument-sans/latin-400.css';
+import '@fontsource/instrument-sans/latin-500.css';
+import '@fontsource/instrument-sans/latin-600.css';
+import '@fontsource/instrument-sans/latin-700.css';
+import font400 from '@fontsource/instrument-sans/files/instrument-sans-latin-400-normal.woff2?url';
+import font700 from '@fontsource/instrument-sans/files/instrument-sans-latin-700-normal.woff2?url';
 
-const { title, description = 'Crystal Bay real estate development projects.', accent = '#5b84a6' } = Astro.props;
+const { title, description = 'Crystal Bay real estate development projects.', accent = '#2f5d8a' } = Astro.props;
 const pageTitle = title ? `${title} | Crystal Bay` : 'Crystal Bay';
 ---
 
@@ -12,29 +18,51 @@ const pageTitle = title ? `${title} | Crystal Bay` : 'Crystal Bay';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <link rel="icon" href="/favicon.ico?v=2" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href={font700} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font400} as="font" type="font/woff2" crossorigin />
   </head>
   <body style={`--accent: ${accent}`}>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/">
+        <a class="brand" href="/" aria-label="Crystal Bay home">
           <Logo />
         </a>
-        <nav class="site-nav">
-          <a href="/">Home</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/#projects">Projects</a>
+          <a class="pill" href="/#projects">Register interest</a>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <slot />
     </main>
 
     <footer class="site-footer">
       <div class="wrap">
-        <span>&copy; {new Date().getFullYear()} Crystal Bay Real Estate. All projects conceptual and subject to change.</span>
-        <a href="/">Back to Home</a>
+        <a class="brand" href="/" aria-label="Crystal Bay home"><Logo /></a>
+        <span>&copy; {new Date().getFullYear()} Crystal Bay. All projects conceptual and subject to change.</span>
       </div>
     </footer>
+
+    <script is:inline>
+      // Scroll reveal; content stays visible if JS or IntersectionObserver is unavailable.
+      (function () {
+        var els = document.querySelectorAll('[data-reveal]');
+        if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.documentElement.classList.add('js-reveal');
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
   </body>
 </html>
