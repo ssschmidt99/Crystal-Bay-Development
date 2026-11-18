@@ -223,6 +223,35 @@ a { color: inherit; }
 .drawing-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #fff; }
 .drawing-card figcaption { padding: 0.75rem 1rem; font-size: 0.82rem; font-weight: 600; color: var(--ink-2); border-top: 1px solid var(--line); }
 
+/* ---------- The Lookout (Reno) page ---------- */
+.coming-soon .lead { margin: 0 0 0.75rem; max-width: 40rem; font-size: clamp(1.3rem, 2.6vw, 1.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.feature-photo { margin: 0; }
+.feature-photo img { width: 100%; height: auto; border-radius: var(--radius); }
+
+.lots-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 2rem; align-items: start; }
+.lot-stack { display: grid; gap: 1rem; }
+.lot-card .lot-size { margin: 0.15rem 0 0; }
+.lot-card .lot-size:first-of-type { margin-top: 0; }
+.parcel-map { margin: 0; }
+.parcel-map img { width: 100%; border-radius: var(--radius); }
+.parcel-map figcaption { margin-top: 0.6rem; font-size: 0.8rem; color: var(--ink-3); }
+
+.residence { margin-bottom: 3.5rem; }
+.residence-copy { max-width: 46rem; margin-bottom: 1.5rem; }
+.residence-copy blockquote { margin: 0.6rem 0 0.75rem; font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.45; letter-spacing: -0.01em; color: var(--ink); }
+.residence-copy .cite { margin: 0; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.residence-single { margin: 0; max-width: 46rem; }
+.residence-single img { width: 100%; border-radius: var(--radius); }
+
+.split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.split-photo { margin: 0; }
+.split-photo img { width: 100%; border-radius: var(--radius); aspect-ratio: 4 / 5; object-fit: cover; }
+
+.inquire-layout { display: grid; grid-template-columns: minmax(0, 36rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: stretch; }
+.inquire-layout .register-panel { max-width: none; }
+.art-card { margin: 0; min-height: 22rem; }
+.art-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 24px; }
+
 /* ---------- Register form ---------- */
 .register-panel { background: var(--wash); border-radius: 24px; padding: clamp(1.5rem, 4vw, 2.5rem); max-width: 36rem; }
 .register-panel h2 { margin: 0 0 0.4rem; font-size: 1.7rem; letter-spacing: -0.03em; }
@@ -257,6 +286,10 @@ a { color: inherit; }
   .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .gallery-grid a:first-child { grid-row: auto; }
   .form-row { grid-template-columns: 1fr; }
+  .lots-layout, .split, .inquire-layout { grid-template-columns: 1fr; }
+  .art-card { min-height: 0; }
+  .art-card img { aspect-ratio: 5 / 4; }
+  .split-photo img { aspect-ratio: 4 / 3; }
   .site-nav a:not(.pill) { display: none; }
   .site-nav a.pill { padding: 0.5rem 0.9rem; font-size: 0.85rem; }
   .logo-word { font-size: 0.9rem !important; }

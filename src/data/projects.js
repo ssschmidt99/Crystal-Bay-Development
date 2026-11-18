@@ -107,31 +107,77 @@ export const projects = [
     slug: 'reno-custom-lots',
     tag: 'Homesites Available',
     tile: '/images/reno-custom-lots/render-exterior.jpg',
-    name: 'Reno Custom Lots',
-    headline: { line1: 'Reno', accentWord: 'Custom Lots' },
+    name: 'The Lookout at Villagio',
+    headline: { line1: 'The Lookout', accentWord: 'at Villagio' },
     location: 'Belsera Heights, Reno, Nevada',
     category: 'Custom Lots',
     stat: '3 homesites',
     summary: 'Three high-end custom homesites overlooking Reno.',
-    description: 'Three high-end custom homesites in the Belsera Heights foothills overlooking Reno, Nevada.',
+    description:
+      'The Lookout at Villagio: three high-end custom homesites on a hilltop in Belsera Heights, overlooking Reno, Nevada.',
     accent: '#6e4b5e',
     custom: true,
     details: {
       status: 'Homesites Available',
       neighborhood: 'Belsera Heights',
+      address: '6000 Vista Occhio · Reno, NV 89519',
       stats: [
         { label: 'Homesites', value: '3' },
         { label: 'Lot Sizes', value: '0.51 – 0.67 acres' },
-        { label: 'Access', value: 'Private Street' },
+        { label: 'Conceptual Homes', value: '±4,670 – 6,000 sq ft' },
         { label: 'Utilities', value: 'Approved to Site' },
       ],
+      lead: 'Reserved for only three discerning owners.',
       overview:
-        "Three high-end custom homesites overlooking Reno, Nevada, set in the gated foothills of Belsera Heights off Vista Occhio. Each newly subdivided parcel ranges from roughly half an acre to two-thirds of an acre, with public utilities, private waterline, and sanitary sewer already granted to the site. Surrounded by the region's premier golf clubs and minutes from downtown Reno and Reno–Tahoe International Airport, these homesites are a rare opportunity to build a custom estate in one of Reno's most sought-after settings.",
+        "This extraordinary hilltop enclave represents one of the rarest residential offerings presented in Reno. Three newly subdivided homesites, from roughly half an acre to two-thirds of an acre, sit above the city on a private street, with public utilities, private waterline, and sanitary sewer already granted to the site. Surrounded by the region's premier golf clubs and minutes from downtown Reno and Reno–Tahoe International Airport, The Lookout is a rare opportunity to build a custom estate in one of Reno's most sought-after settings.",
+      aerial: {
+        src: '/images/reno-custom-lots/lookout-aerial.jpg',
+        alt: 'Aerial view of the hilltop with the three Lookout homesites, A, B, and C, outlined',
+      },
       lots: [
-        { name: 'Homesite 1', parcel: 'Parcel 1-A-2', size: '29,353 sq ft (±0.67 acres)' },
-        { name: 'Homesite 2', parcel: 'Parcel 1-A-3', size: '25,194 sq ft (±0.58 acres)' },
-        { name: 'Homesite 3', parcel: 'Parcel 1-A-4', size: '22,265 sq ft (±0.51 acres)' },
+        { name: 'The Lookout | A', parcel: 'Parcel 1-A-4', size: '22,265 sq ft (±0.51 acres)', home: '±4,670 sq ft' },
+        { name: 'The Lookout | B', parcel: 'Parcel 1-A-3', size: '25,194 sq ft (±0.58 acres)', home: '±5,080 sq ft' },
+        { name: 'The Lookout | C', parcel: 'Parcel 1-A-2', size: '29,353 sq ft (±0.67 acres)', home: '±6,000 sq ft' },
       ],
+      parcelMap: {
+        src: '/images/reno-custom-lots/lookout-parcel-map.jpg',
+        alt: 'Parcel map showing Lookout C at 29,353 sq ft, B at 25,194 sq ft, and A at 22,265 sq ft',
+      },
+      residences: [
+        {
+          label: 'The Lookout | A',
+          architect: 'Jack Hawkins, Architect',
+          quote:
+            'This residence was specifically designed to nestle into this premier, view oriented, luxury property. We are committed to creating architecture that is beautiful, functional and sustainable. Each project is designed to be a unique reflection of the client.',
+          images: [
+            {
+              src: '/images/reno-custom-lots/render-exterior.jpg',
+              alt: 'Contemporary hillside residence for The Lookout A, designed by Hawkins & Associates',
+            },
+            {
+              src: '/images/reno-custom-lots/render-deck.jpg',
+              alt: 'Cantilevered deck of the conceptual Lookout A residence overlooking the Reno foothills',
+            },
+            {
+              src: '/images/reno-custom-lots/render-lower-suite.jpg',
+              alt: 'Lower-level suite and deck of the conceptual Lookout A residence',
+            },
+          ],
+        },
+        {
+          label: 'The Lookout | B',
+          architect: 'Eric Strain, Architect',
+          quote:
+            'The architecture responds by drawing the landscape into the home — carving the building with courtyards, framed views, and moments of greenery that register the passage of the seasons and blur the boundary between shelter and nature.',
+          images: [
+            {
+              src: '/images/reno-custom-lots/lookout-b-render.jpg',
+              alt: 'Conceptual rendering of a glass-walled residence for The Lookout B with landscaped terraces',
+            },
+          ],
+        },
+      ],
+      residenceNote: 'Conceptual plans and renderings are for demonstration purposes only.',
       highlights: [
         'Located in Belsera Heights, an elevated enclave in the foothills of southwest Reno with sweeping views of the city and surrounding hills.',
         'Minutes from downtown Reno and Reno–Tahoe International Airport.',
@@ -139,22 +185,14 @@ export const projects = [
         "Convenient access to the Mount Rose Highway corridor and Lake Tahoe's North Shore.",
         'Neighboring the Villagio Della Montagna and Belsera Heights communities, with private access via Vista Citt’a.',
       ],
-      gallery: [
-        {
-          src: '/images/reno-custom-lots/render-exterior.jpg',
-          alt: 'Contemporary hillside custom home rendering by Hawkins & Associates near Vista Occhio, Reno',
-        },
-        {
-          src: '/images/reno-custom-lots/render-deck.jpg',
-          alt: 'Cantilevered deck rendering of a contemporary custom home overlooking the Reno foothills',
-        },
-        {
-          src: '/images/reno-custom-lots/render-lower-suite.jpg',
-          alt: 'Lower-level suite and deck rendering of a contemporary custom home in the Reno foothills',
-        },
-      ],
-      galleryNote:
-        'Renderings by Hawkins & Associates Architecture (Reno, NV) illustrate the caliber of contemporary hillside estate these homesites are suited for.',
+      renoView: {
+        src: '/images/reno-custom-lots/lookout-reno-view.jpg',
+        alt: 'View from the hilltop across Reno with autumn trees and the Sierra foothills beyond',
+      },
+      art: {
+        src: '/images/reno-custom-lots/lookout-art.jpg',
+        alt: 'Painted desert sky artwork with The Lookout at Villagio logo',
+      },
       drawings: [
         {
           src: '/images/reno-custom-lots/drawing-southeast-elevation.jpg',
@@ -192,7 +230,7 @@ export const projects = [
           caption: 'Section at Main Entry',
         },
       ],
-      drawingsNote: 'Schematic design drawings by Hawkins & Associates Architecture, Reno, NV.',
+      drawingsNote: 'Schematic design drawings for The Lookout | A by Hawkins & Associates Architecture, Reno, NV.',
     },
   },
   {

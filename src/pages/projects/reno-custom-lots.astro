@@ -17,7 +17,7 @@ const formName = `interest-${project.slug}`;
     <h1>
       {project.headline.line1} <em>{project.headline.accentWord}</em>
     </h1>
-    <p class="location">{details.neighborhood} &middot; Reno, Nevada</p>
+    <p class="location">{details.address}</p>
 
     <div class="stat-cluster">
       {
@@ -30,57 +30,90 @@ const formName = `interest-${project.slug}`;
       }
     </div>
 
+    <p class="lead">{details.lead}</p>
     <p class="description">{details.overview}</p>
+
+    <figure class="feature-photo">
+      <img src={details.aerial.src} alt={details.aerial.alt} loading="eager" />
+    </figure>
   </div>
 
   <section class="section">
     <div class="wrap">
       <div class="section-heading">
         <span class="eyebrow">Available Homesites</span>
-        <h2>Three parcels, ready to build</h2>
+        <h2>Three homesites, one hilltop</h2>
       </div>
-      <div class="lot-grid">
-        {
-          details.lots.map((lot) => (
-            <div class="lot-card">
-              <p class="lot-name">{lot.name}</p>
-              <p class="lot-parcel">{lot.parcel}</p>
-              <p class="lot-size">{lot.size}</p>
+      <div class="lots-layout">
+        <div class="lot-stack">
+          {
+            details.lots.map((lot) => (
+              <div class="lot-card">
+                <p class="lot-name">{lot.name}</p>
+                <p class="lot-parcel">{lot.parcel}</p>
+                <p class="lot-size">Lot: {lot.size}</p>
+                <p class="lot-size">Conceptual home: {lot.home}</p>
+              </div>
+            ))
+          }
+        </div>
+        <figure class="parcel-map">
+          <img src={details.parcelMap.src} alt={details.parcelMap.alt} loading="lazy" />
+          <figcaption>Refer to the parcel map specification document for more detail.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-heading">
+        <span class="eyebrow">Conceptual Residences</span>
+        <h2>Architecture drawn from the landscape</h2>
+      </div>
+
+      {
+        details.residences.map((res) => (
+          <article class="residence">
+            <div class="residence-copy">
+              <span class="eyebrow">{res.label}</span>
+              <blockquote>{res.quote}</blockquote>
+              <p class="cite">{res.architect}</p>
             </div>
-          ))
-        }
-      </div>
+            {res.images.length > 1 ? (
+              <div class="gallery-grid">
+                {res.images.map((image) => (
+                  <a href={image.src} target="_blank" rel="noopener">
+                    <img src={image.src} alt={image.alt} loading="lazy" />
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <figure class="residence-single">
+                <img src={res.images[0].src} alt={res.images[0].alt} loading="lazy" />
+              </figure>
+            )}
+          </article>
+        ))
+      }
+      <p class="gallery-note">{details.residenceNote}</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="wrap">
-      <div class="section-heading">
-        <span class="eyebrow">The Setting</span>
-        <h2>Southwest Reno's foothills</h2>
+    <div class="wrap split">
+      <div>
+        <div class="section-heading">
+          <span class="eyebrow">The Setting</span>
+          <h2>Southwest Reno's foothills</h2>
+        </div>
+        <ul class="highlights-list">
+          {details.highlights.map((point) => <li>{point}</li>)}
+        </ul>
       </div>
-      <ul class="highlights-list">
-        {details.highlights.map((point) => <li>{point}</li>)}
-      </ul>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-heading">
-        <span class="eyebrow">Design Inspiration</span>
-        <h2>The caliber of home this setting inspires</h2>
-      </div>
-      <div class="gallery-grid">
-        {
-          details.gallery.map((image, i) => (
-            <a href={image.src} target="_blank" rel="noopener">
-              <img src={image.src} alt={image.alt} loading={i === 0 ? 'eager' : 'lazy'} />
-            </a>
-          ))
-        }
-      </div>
-      <p class="gallery-note">{details.galleryNote}</p>
+      <figure class="split-photo">
+        <img src={details.renoView.src} alt={details.renoView.alt} loading="lazy" />
+      </figure>
     </div>
   </section>
 
@@ -88,7 +121,7 @@ const formName = `interest-${project.slug}`;
     <div class="wrap">
       <div class="section-heading">
         <span class="eyebrow">Architectural Drawings</span>
-        <h2>Schematic elevations & sections</h2>
+        <h2>The Lookout | A: schematic elevations & sections</h2>
       </div>
       <div class="drawing-grid">
         {
@@ -105,7 +138,7 @@ const formName = `interest-${project.slug}`;
   </section>
 
   <section class="section">
-    <div class="wrap">
+    <div class="wrap inquire-layout">
       <div class="register-panel">
         <h2>Inquire about this listing</h2>
         <p class="intro">Connect with the Crystal Bay team to learn more about these homesites.</p>
@@ -157,6 +190,12 @@ const formName = `interest-${project.slug}`;
         </form>
       </div>
 
+      <figure class="art-card">
+        <img src={details.art.src} alt={details.art.alt} loading="lazy" />
+      </figure>
+    </div>
+
+    <div class="wrap">
       <a class="back-home" href="/">&larr; Back to Crystal Bay Home</a>
     </div>
   </section>
